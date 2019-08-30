@@ -48,7 +48,7 @@ public class HttpUtils {
 
 
     public static <T> T getInterface(String baseUrl, Class<T> cls) {
-        if (retrofitMap.containsKey(baseUrl)) {
+        if (!retrofitMap.containsKey(baseUrl)) {
             throw new RuntimeException("Please call initRetrofit when you use it");
         }
         //检查返回值
