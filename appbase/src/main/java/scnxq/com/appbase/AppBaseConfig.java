@@ -1,6 +1,7 @@
 package scnxq.com.appbase;
 
 public class AppBaseConfig {
+    private String logTag = "niexq";
     private String sdcardBaseDir = "niexq";
     private String dbName = "niexqdb";
     private Boolean dbAllowTransaction = true;
@@ -38,5 +39,11 @@ public class AppBaseConfig {
         this.dbVersion = dbVersion;
     }
 
+    public String getLogTag() {
+        return logTag;
+    }
 
+    public void setLogTag(String logTag) {
+        this.logTag = logTag;
+    }
 }

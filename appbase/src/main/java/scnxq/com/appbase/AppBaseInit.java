@@ -13,6 +13,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import org.xutils.DbManager;
 import org.xutils.db.DbManagerImpl;
 
+import scnxq.com.appbase.utils.LogUtils;
 import scnxq.com.appbase.utils.SdCardUtils;
 import scnxq.com.appbase.utils.ViewUtils;
 
@@ -27,6 +28,9 @@ public class AppBaseInit {
     }
 
     public static void init(Application application, AppBaseConfig appBaseConfig) {
+        //日志
+        LogUtils.TAG = appBaseConfig.getLogTag();
+        //数据库
         SdCardUtils.ROOT_DIR = appBaseConfig.getSdcardBaseDir();
         DbManager.DaoConfig daoConfig = new DbManager.DaoConfig();
         daoConfig.setAllowTransaction(appBaseConfig.getDbAllowTransaction());
@@ -34,7 +38,9 @@ public class AppBaseInit {
         daoConfig.setDbVersion(appBaseConfig.getDbVersion());
         daoConfig.setDbDir(SdCardUtils.getDbDir(application));
         dbManager = DbManagerImpl.getInstance(application, daoConfig);
+        //图片加载
         initImageLoaderConfig(application);
+
     }
 
     private static void initImageLoaderConfig(Context context) {
