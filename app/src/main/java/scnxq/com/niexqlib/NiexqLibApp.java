@@ -14,7 +14,6 @@ public class NiexqLibApp extends MultiDexApplication {
         config.setSdcardBaseDir("niexqlib");
     }
 
-
     @Override
     public void onCreate() {
         super.onCreate();

@@ -1,0 +1,16 @@
+<resources>
+    <dimen name="txt_base_10">10sp</dimen>
+    <dimen name="txt_base_12">12sp</dimen>
+    <dimen name="txt_base_14">14sp</dimen>
+    <dimen name="txt_base_16">16sp</dimen>
+    <dimen name="txt_base_17">17sp</dimen>
+    <dimen name="txt_base_18">18sp</dimen>
+
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_14">14dp</dimen>
+
+</resources>

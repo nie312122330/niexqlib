@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_white">#FFFFFF</color>
+    <!--定义常用色-->
+    <color name="color_niexq_title_bar_bg">#00AAEE</color>
+    <color name="color_niexq_main">#00AAEE</color>
+    <color name="color_niexq_main_bg">#F5F5F5</color>
+    <color name="color_niexq_transparent">#00000000</color>
+    <color name="color_niexq_line_color">#E4E4E4</color>
+    <color name="color_niexq_line_deep_color">#CCCCCC</color>
+
+    <!--内容-->
+    <color name="color_niexq_ac_title_color">#555555</color>
+    <color name="color_niexq_content_title_color">#666666</color>
+    <color name="color_niexq_content1_color">#666666</color>
+    <color name="color_niexq_content2_color">#777777</color>
+    <color name="color_niexq_content_time_color">#999999</color>
+
+    <!--ImageButton-->
+    <color name="image_button_press">#88DDDDDD</color>
+    <color name="image_button_ripple">#DDDDDD</color>
+</resources>
