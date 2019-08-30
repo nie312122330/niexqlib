@@ -1,13 +1,15 @@
 package scnxq.com.niexqlib;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import scnxq.com.appbase.NiexqBaseActivity;
+
+public class MainActivity extends NiexqBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        enableSwipeBack(true);
     }
 }
