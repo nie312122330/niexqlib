@@ -26,7 +26,7 @@ import scnxq.com.appbase.utils.ViewUtils;
  * 1.该页面已支持了左滑返回，覆盖该方法返回对应true或者false即可
  */
 public class NiexqBaseActivity extends SwipeBackActivity {
-    private NiexqBaseActivity niexqBaseActivity = null;
+    protected NiexqBaseActivity niexqBaseActivity = null;
     protected FrameLayout top1Framelayout;
     protected LinearLayout top2LinearLayout;
     protected ViewGroup contentView;
