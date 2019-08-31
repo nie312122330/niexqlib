@@ -22,7 +22,12 @@ public class LogUtils {
     }
 
     public static final void error(Object object) {
-        ((Exception) (object)).printStackTrace();
+        if (null == object) {
+            return;
+        }
+        if (object instanceof Throwable) {
+            ((Throwable) (object)).printStackTrace();
+        }
         Log.e(TAG, object.toString());
     }
 }
