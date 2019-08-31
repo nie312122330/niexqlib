@@ -16,6 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
@@ -85,8 +88,19 @@ public class NiexqBaseActivity extends SwipeBackActivity {
 
     @Override
     protected void onResume() {
-        super.onResume();
         changeToDefalutResourcesConf();
+        super.onResume();
+        for (ActivityLifeCicleChangeListner activityLifeCicleChangeListner : activityLifeCicleChangeListners) {
+            activityLifeCicleChangeListner.onChange(LifeCircleType.ONRESUM);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        for (ActivityLifeCicleChangeListner activityLifeCicleChangeListner : activityLifeCicleChangeListners) {
+            activityLifeCicleChangeListner.onChange(LifeCircleType.ONPAUSE);
+        }
     }
 
     @Override
@@ -95,6 +109,11 @@ public class NiexqBaseActivity extends SwipeBackActivity {
         if (null != unbinder) {
             unbinder.unbind();
         }
+        for (ActivityLifeCicleChangeListner activityLifeCicleChangeListner : activityLifeCicleChangeListners) {
+            activityLifeCicleChangeListner.onChange(LifeCircleType.ONDESTROY);
+        }
+        activityLifeCicleChangeListners.clear();
+        
     }
 
     protected void showTitleBar(boolean show, @ColorInt int color) {
@@ -141,6 +160,26 @@ public class NiexqBaseActivity extends SwipeBackActivity {
         config.setToDefaults();
         config.fontScale = 1.0f;
         res.updateConfiguration(config, res.getDisplayMetrics());
+    }
+    //生命周期监听
+
+    public interface ActivityLifeCicleChangeListner {
+        /**
+         * 目前只监听了ONDESTROY,ONRESUM,ONPAUSE
+         *
+         * @param lifeCircleType
+         */
+        void onChange(LifeCircleType lifeCircleType);
+    }
+
+    public enum LifeCircleType {
+        ONDESTROY, ONRESUM, ONPAUSE;
+    }
+
+    private List<ActivityLifeCicleChangeListner> activityLifeCicleChangeListners = new ArrayList<>(0);
+
+    public void addActivityLifeCicleChangeListner(ActivityLifeCicleChangeListner activityLifeCicleChangeListner) {
+        activityLifeCicleChangeListners.add(activityLifeCicleChangeListner);
     }
 
 
