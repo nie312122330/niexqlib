@@ -27,9 +27,12 @@ public class AppBaseInit {
         return dbManager;
     }
 
-    public static void init(Application application, AppBaseConfig appBaseConfig) {
+    public static void initLog(AppBaseConfig appBaseConfig) {
         //日志
         LogUtils.TAG = appBaseConfig.getLogTag();
+    }
+
+    public static void initDb(Application application, AppBaseConfig appBaseConfig) {
         //数据库
         SdCardUtils.ROOT_DIR = appBaseConfig.getSdcardBaseDir();
         DbManager.DaoConfig daoConfig = new DbManager.DaoConfig();
@@ -38,22 +41,21 @@ public class AppBaseInit {
         daoConfig.setDbVersion(appBaseConfig.getDbVersion());
         daoConfig.setDbDir(SdCardUtils.getDbDir(application));
         dbManager = DbManagerImpl.getInstance(application, daoConfig);
-        //图片加载
-        initImageLoaderConfig(application);
-
     }
 
-    private static void initImageLoaderConfig(Context context) {
-        ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(context);
+
+    public static void initImageLoader(Application application, AppBaseConfig appBaseConfig) {
+
+        ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(application);
         builder.threadPriority(Thread.NORM_PRIORITY - 2);
         //拒绝一个图片多个大小在内存中
-        builder.memoryCacheExtraOptions(ViewUtils.getScreenWidth(context), ViewUtils.getScreenHeight(context));
+        builder.memoryCacheExtraOptions(ViewUtils.getScreenWidth(application), ViewUtils.getScreenHeight(application));
         builder.denyCacheImageMultipleSizesInMemory();
         builder.threadPoolSize(5);
         builder.memoryCacheSize(100 * 1024 * 1024);
         builder.memoryCache(new WeakMemoryCache());
         //图片缓存目录
-        builder.diskCache(new UnlimitedDiskCache(SdCardUtils.getImageLoaderCache(context)));
+        builder.diskCache(new UnlimitedDiskCache(SdCardUtils.getImageLoaderCache(application)));
         builder.diskCacheFileNameGenerator(new Md5FileNameGenerator());
         //图片默认的缓存目录为//cache/url-image
         builder.tasksProcessingOrder(QueueProcessingType.FIFO);

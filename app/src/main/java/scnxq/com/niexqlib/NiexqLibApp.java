@@ -18,7 +18,9 @@ public class NiexqLibApp extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         this.app = this;
-        AppBaseInit.init(app, config);
+        AppBaseInit.initLog(config);
+        AppBaseInit.initDb(this, config);
+        AppBaseInit.initImageLoader(this, config);
     }
 
 }
