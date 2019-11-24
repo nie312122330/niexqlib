@@ -1,6 +1,7 @@
 package scnxq.com.appbase.utils;
 
-import org.apache.commons.codec.binary.Base64;
+
+import android.util.Base64;
 
 import java.nio.charset.Charset;
 
@@ -29,7 +30,7 @@ public class AESUtil {
             Cipher cipher = Cipher.getInstance(ALGORITHMSTR);
             cipher.init(Cipher.ENCRYPT_MODE, skey);
             byte[] encrypt = cipher.doFinal(plainText.getBytes(CHARSET));
-            return Base64.encodeBase64String(encrypt).trim();
+            return Base64.encodeToString(encrypt, Base64.NO_WRAP).trim();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +44,7 @@ public class AESUtil {
             SecretKeySpec skey = new SecretKeySpec(aesPwd.getBytes(CHARSET), "AES");
             Cipher cipher = Cipher.getInstance(ALGORITHMSTR);
             cipher.init(Cipher.DECRYPT_MODE, skey);
-            byte[] decrypt = cipher.doFinal(Base64.decodeBase64(base64EncryptStr));
+            byte[] decrypt = cipher.doFinal(Base64.decode(base64EncryptStr, Base64.NO_WRAP));
             return new String(decrypt).trim();
         } catch (Exception e) {
             throw new RuntimeException(e);
