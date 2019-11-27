@@ -3,6 +3,9 @@ package scnxq.com.appbase.utils;
 import android.content.Context;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
@@ -18,19 +21,37 @@ public class AssertFileUtils {
      * @return
      */
     public static String getAssetsFile(Context context, String fileName) {
+        InputStream open = null;
         try {
-            InputStreamReader inputReader = new InputStreamReader(context.getResources().getAssets().open(fileName));
-            BufferedReader bufReader = new BufferedReader(inputReader);
-            String line = "";
-            StringBuilder Result = new StringBuilder();
-            while ((line = bufReader.readLine()) != null)
-                Result.append(line);
-            bufReader.close();
-            bufReader = null;
-            return Result.toString();
+            open = context.getResources().getAssets().open(fileName);
+            byte[] bytes = consumeInputStream(open);
+            String result = null;
+            if (null != bytes) {
+                result = new String(bytes);
+            }
+            open.close();
+            return result;
         } catch (Exception e) {
             LogUtils.error(e);
             return "";
+        }
+    }
+
+    public static byte[] consumeInputStream(InputStream inputStream) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        byte[] outData = null;
+        try {
+            for (int count; (count = inputStream.read(buffer)) != -1; ) {
+                byteArrayOutputStream.write(buffer, 0, count);
+            }
+            byteArrayOutputStream.flush();
+            outData = byteArrayOutputStream.toByteArray();
+            byteArrayOutputStream.close();
+            return outData;
+        } catch (IOException ex) {
+            LogUtils.error(ex);
+            return null;
         }
     }
 
