@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/niexqlib.iml" filepath="$PROJECT_DIR$/niexqlib.iml" group="niexqlib" />
+      <module fileurl="file://$PROJECT_DIR$/niexqlib/niexqlib-niexqlib.iml" filepath="$PROJECT_DIR$/niexqlib/niexqlib-niexqlib.iml" group="niexqlib/niexqlib" />
+      <module fileurl="file://$PROJECT_DIR$/niexqlibdemo/niexqlibdemo.iml" filepath="$PROJECT_DIR$/niexqlibdemo/niexqlibdemo.iml" group="niexqlib/niexqlibdemo" />
+    </modules>
+  </component>
+</project>

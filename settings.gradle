@@ -1,4 +1,3 @@
-include ':app',
-        ':dbutils',
-        ':swipebacklayout',
-        ':appbase'
+include ':niexqlib',
+        ':niexqlibdemo'
+
