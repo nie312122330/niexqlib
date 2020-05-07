@@ -4,8 +4,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.v4.graphics.ColorUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +13,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.core.graphics.ColorUtils;
 
 import java.util.ArrayList;
 import java.util.List;

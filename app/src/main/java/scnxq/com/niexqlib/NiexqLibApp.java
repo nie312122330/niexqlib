@@ -1,11 +1,12 @@
 package scnxq.com.niexqlib;
 
-import android.support.multidex.MultiDexApplication;
+
+import android.app.Application;
 
 import scnxq.com.appbase.AppBaseConfig;
 import scnxq.com.appbase.AppBaseInit;
 
-public class NiexqLibApp extends MultiDexApplication {
+public class NiexqLibApp extends Application {
     public static NiexqLibApp app = null;
     public static AppBaseConfig config;
 
