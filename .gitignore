@@ -1,2 +1,5 @@
 /niexqlib/build
 /niexqlibdemo/build
+.gradle
+.idea
+/*.iml
